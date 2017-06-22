@@ -1,0 +1,189 @@
+/* 6.21.2017 Arduino Robot Dance
+Christine, Ellie, Katy, Star, Janiyah, Kayla
+Theme: Be Our Guest
+*/
+
+#include <Servo.h>  
+ 
+Servo servoLeft;   
+Servo servoRight; 
+ 
+void setup() 
+{
+  pinMode(9, OUTPUT);
+  servoLeft.attach(13);                
+  servoRight.attach(12);                 
+}  
+
+  void moveForward(int x){
+    servoLeft.writeMicroseconds(1700);         
+    servoRight.writeMicroseconds(1300);        
+    delay(x);                                  
+  }
+  void moveBackward(int y){
+    servoLeft.writeMicroseconds(1300);        
+    servoRight.writeMicroseconds(1700);       
+    delay(y);                                
+  }
+  void turnLeft(){
+    servoLeft.writeMicroseconds(1300);        
+    servoRight.writeMicroseconds(1300);        
+    delay(544);                                 
+  }
+  void turnRight(){
+    servoLeft.writeMicroseconds(1700);        
+    servoRight.writeMicroseconds(1700);       
+    delay(540);                               
+  }
+   void turnAround(){
+    servoLeft.writeMicroseconds(1700);         
+    servoRight.writeMicroseconds(1700);       
+    delay(1025);                                
+  }
+  void threeSixtyRight(){
+    servoLeft.writeMicroseconds(1700);        
+    servoRight.writeMicroseconds(1700);       
+    delay(2050);                                 
+  }
+    void threeSixtyLeft(){
+    servoLeft.writeMicroseconds(1300);         // Left wheel counterclockwise
+    servoRight.writeMicroseconds(1300);        // Right wheel counterclockwise
+    delay(2050);                                 // ...for x seconds
+  }
+  void lightBlink(){
+  digitalWrite(9, HIGH);
+  delay(500);
+  digitalWrite(9, LOW);
+  delay(500);
+  } 
+  void Star(){
+   digitalWrite(9, HIGH);
+  delay(350);           
+  digitalWrite(9, LOW);
+  delay(1550);
+  digitalWrite(9, HIGH);
+  delay(650);
+  digitalWrite(9, LOW);
+  }
+  void Ellie(){
+  digitalWrite(9, HIGH);
+  delay(350);           
+  digitalWrite(9, LOW);
+  delay(1550);
+  digitalWrite(9, HIGH);
+  delay(650);
+  digitalWrite(9, LOW);
+}
+
+   
+void loop(){
+  //Be our guest, be our guest!
+  lightBlink();
+  threeSixtyLeft();
+  moveBackward(1000);
+  
+  //Our command is your request
+  Star();
+  threeSixtyLeft();
+  moveForward(1000);
+  
+  //It's been years since we've had anybody here
+  threeSixtyLeft();
+  threeSixtyLeft();
+  
+  //And we're obsessed
+  Ellie();
+  threeSixtyRight();
+  threeSixtyRight();
+  
+  //With your meal, with your ease
+  lightBlink();
+  turnLeft();
+  moveForward(500);
+  turnLeft();
+  moveForward(50);
+
+  //Yes, indeed, we aim to please
+  Star();
+  moveForward(250);
+  moveBackward(250);
+    moveForward(250);
+  moveBackward(250);
+    moveForward(250);
+  moveBackward(250);
+    moveForward(250);
+  moveBackward(250);
+    moveForward(250);
+  moveBackward(250);
+    moveForward(250);
+  moveBackward(250);
+
+
+
+  //While the candle lights still glowing
+    Ellie();
+      threeSixtyLeft();
+        moveForward(1000);
+
+  //Let us help you, we'll keep going
+    Star();
+    threeSixtyLeft();
+    threeSixtyLeft();
+
+  //Course by course, one by one (6000)
+    Ellie();
+  moveForward(1000);
+  moveForward(1000);
+  threeSixtyRight();
+  threeSixtyLeft();
+
+
+  //Until you shout, enough I’m done (2000)
+  moveForward(500);
+  moveBackward(500);
+  moveForward(500);
+  moveBackward(500);
+
+
+  //Then we'll sing you off to sleep as you digest (3000)
+    Star();
+  threeSixtyLeft();
+
+  //Tonight you'll prop your feet up (1000)
+  threeSixtyRight();
+
+  //But for now, let's eat up (2000)
+    Ellie();
+  moveForward(1000);
+  moveBackward(1000);
+
+
+
+  //Be our guest (2000)
+  threeSixtyRight();
+  threeSixtyLeft();
+
+   
+  //Be our guest (2000)
+    Star();
+  threeSixtyLeft();
+  threeSixtyRight();
+
+  
+   
+  //Be our guest(1500)
+  moveBackward(500);
+  moveForward(500);
+  moveBackward(500);
+   
+  //Please, be our guest (11000)
+    Star();
+    threeSixtyLeft();
+    threeSixtyLeft();
+    Ellie();
+    threeSixtyLeft();
+    threeSixtyLeft();
+    Star();
+    threeSixtyLeft();
+
+}
