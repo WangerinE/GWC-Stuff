@@ -9,6 +9,10 @@ Servo servoRight;
  
 void setup(){
 pinMode(3,OUTPUT);
+int analogPin=3; //phototransistor connected to analog pin 3
+int ledPin=13; //led is connected to pin 13 (on-board led)
+int voltm=0;
+voltm = analogRead(analogPin); //read the phototransistor
 
 Serial.begin(9600);                           // Built-in initialization block
   pinMode(7, INPUT);                    // Set right whisker pin to input
@@ -19,11 +23,7 @@ Serial.begin(9600);                           // Built-in initialization block
 
   servoLeft.attach(13);                 // Attach left signal to pin 13 
   servoRight.attach(12);                // Attach right signal to pin 12
-  int analogPin=3; //phototransistor connected to analog pin 3
-int ledPin=13; //led is connected to pin 13 (on-board led)
-int voltm=0;
-voltm=analogRead(analogPin); //read the phototransistor
-}  
+ }
  
 void loop(){
 
