@@ -18,9 +18,6 @@ void setup(){
   pinMode(7, INPUT);                    // Set right whisker pin to input
   pinMode(5, INPUT);                    // Set left whisker pin to input  
 
-  tone(4, 3000, 1000);                  // Play tone for 1 second
-  delay(10000);                          // Delay to finish tone
-
   servoLeft.attach(13);                 // Attach left signal to pin 13 
   servoRight.attach(12);                // Attach right signal to pin 12
 }
@@ -49,7 +46,7 @@ void loop(){
     pause(200);                         // Stop for 0.2 seconds
     tone(4, 4000, 100);                 // Play a 0.1 ms tone
     pause(200);                         // Stop for 0.2 seconds
-    backward(5000);                     // Back up 1 second
+    backward(1000);                     // Back up 1 second
     turnLeft(800);                      // Turn left about 120 degrees
   }
   else if(wLeft == 0)                   // If only left whisker contact
@@ -68,7 +65,7 @@ void loop(){
   }
   else                                      // Otherwise, no whisker contact
   {
-    forward(20);                            // Forward 1/50 of a second
+    forward(200);                            // Forward 1/50 of a second
   }
 }
 
@@ -81,8 +78,8 @@ void pause(int time)                        // Backward function
 
 void forward(int time)                      // Forward function
 {
-  servoLeft.writeMicroseconds(1700);        // Left wheel counterclockwise
-  servoRight.writeMicroseconds(1300);       // Right wheel clockwise
+  servoLeft.writeMicroseconds(1300);        // Left wheel counterclockwise
+  servoRight.writeMicroseconds(1700);       // Right wheel clockwise
   delay(time);                              // Maneuver for time ms
 }
 
@@ -101,8 +98,8 @@ void turnRight(int time)                    // Right turn function
 }
 
 void backward(int time){
-  servoLeft.writeMicroseconds(1300);    // Left wheel clockwise
-  servoRight.writeMicroseconds(1700);   // Right wheel counterclockwise
+  servoLeft.writeMicroseconds(1700);    // Left wheel clockwise
+  servoRight.writeMicroseconds(1300);   // Right wheel counterclockwise
   delay(time);                          // Maneuver for time ms
 }
 
