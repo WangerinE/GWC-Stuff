@@ -6,15 +6,15 @@
  
 Servo servoLeft;                        // Declare left and right servos
 Servo servoRight;
- 
-void setup(){
-pinMode(3,OUTPUT);
+int voltm=0;
 int analogPin=3; //phototransistor connected to analog pin 3
 int ledPin=13; //led is connected to pin 13 (on-board led)
-int voltm=0;
-voltm = analogRead(analogPin); //read the phototransistor
 
-Serial.begin(9600);                           // Built-in initialization block
+void setup(){
+  pinMode(3,OUTPUT);
+
+
+  Serial.begin(9600);                           // Built-in initialization block
   pinMode(7, INPUT);                    // Set right whisker pin to input
   pinMode(5, INPUT);                    // Set left whisker pin to input  
 
@@ -23,18 +23,25 @@ Serial.begin(9600);                           // Built-in initialization block
 
   servoLeft.attach(13);                 // Attach left signal to pin 13 
   servoRight.attach(12);                // Attach right signal to pin 12
- }
- 
-void loop(){
+}
 
-Serial.println(voltm);
-if (voltm>200)
-{digitalWrite(ledPin,HIGH);}
-else
-{digitalWrite(ledPin,LOW);})                             // Main loop auto-repeats
-{
+
+void loop(){
+  voltm = analogRead(analogPin); //read the phototransistor
+  Serial.println(voltm);
+  if (voltm>200)
+  { 
+  digitalWrite(ledPin,HIGH);
+  }
+  else
+  {
+  digitalWrite(ledPin,LOW);
+  }                        // Main loop auto-repeats
+
   byte wLeft = digitalRead(5);          // Copy right result to wLeft  
   byte wRight = digitalRead(7);         // Copy left result to wRight
+  
+
 
   if((wLeft == 0) && (wRight == 0))     // If both whiskers contact
   {
@@ -93,14 +100,11 @@ void turnRight(int time)                    // Right turn function
   delay(time);                              // Maneuver for time ms
 }
 
-void backward(int time)                     // Backward function
-{
+void backward(int time){
   servoLeft.writeMicroseconds(1300);    // Left wheel clockwise
   servoRight.writeMicroseconds(1700);   // Right wheel counterclockwise
   delay(time);                          // Maneuver for time ms
 }
+
 // On-Board LED and Phototransistor
-}
-
-
 
